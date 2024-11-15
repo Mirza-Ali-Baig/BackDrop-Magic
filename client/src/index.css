@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.slider{
+    -webkit-appearance: none;
+    height: 100%;
+    background: transparent;
+}
+.slider::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 30px;
+    height: 30px;
+    background: url(/slide_icon.svg) no-repeat center;
+    background-size: cover;
+}
+.bg-layer{
+    background: url(/bg_layer.png);
+}
