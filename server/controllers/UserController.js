@@ -1,5 +1,5 @@
 import {Webhook} from 'svix'
-import userModal from "../models/userModal.js";
+import UserModal from "../models/userModal.js";
 
 // API Controller Function to Manage Clerk User with database
 // API End Point: http://localhost:4000/api/user/webhooks
@@ -24,7 +24,7 @@ const clerkWebhook = async (req, res) => {
                     lastName: data.last_name,
                 }
                 // Insert user data into your database
-                await userModal.create(userData);
+                await UserModal.create(userData);
                 console.log('User created:', data);
                 res.json({
                     status: true,
@@ -41,7 +41,7 @@ const clerkWebhook = async (req, res) => {
                     lastName: data.last_name,
                 }
                 // Update user data in your database
-                await userModal.findOneAndUpdate({clerkId: data.id}, userData);
+                await UserModal.findOneAndUpdate({clerkId: data.id}, userData);
                 console.log('User updated:', data);
                 res.json({
                     status: true,
@@ -51,7 +51,7 @@ const clerkWebhook = async (req, res) => {
             }
             case 'user.deleted':
                 // Delete user data from your database
-                await userModal.findOneAndDelete({clerkId: data.id});
+                await UserModal.findOneAndDelete({clerkId: data.id});
                 console.log('User deleted:', data);
                 res.json({
                     status: true,
